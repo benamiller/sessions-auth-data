@@ -39,6 +39,10 @@ app.get("/login", (req, res) => {
   res.render("login");
 });
 
+app.get("/cart", ensureAuthentication, (req, res) => {
+    res.render("cart", { user: req.session.user });
+});
+
 // POST request for logging in
 app.post("/login", (req, res) => {
   const { username, password } = req.body;
